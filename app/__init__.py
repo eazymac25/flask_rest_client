@@ -12,7 +12,7 @@ db = SQLAlchemy()
 
 def create_app():
 
-    from .models import NycAirData
+    from app.models import NycAirData
 
     app = Flask(__name__)
     api = Api(app)
