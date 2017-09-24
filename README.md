@@ -1,2 +1,2 @@
-# flask_rest_client
+# Simple Flask Client
 simple flask rest client
