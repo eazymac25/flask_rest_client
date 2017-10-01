@@ -1,4 +1,4 @@
-from cdc_app import db
+from cdc_app.core import db
 
 
 class CdcChronicRaw(db.Model):
