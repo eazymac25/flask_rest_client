@@ -1,5 +1,5 @@
 from cdc_app.core import db
-
+db.session
 
 class CdcChronicRaw(db.Model):
 
@@ -53,3 +53,6 @@ class CdcChronicRaw(db.Model):
 
     def get_count(self):
         self.query.count()
+
+    def get_row(self, row_id):
+        return self.query.filter(CdcChronicRaw.id == row_id).all()

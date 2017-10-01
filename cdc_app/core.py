@@ -60,11 +60,17 @@ def update_app_config(app):
 
 def add_api_resources(api):
     # import necessary models
-    from cdc_app.api.cdc_summary import CDCSummary
+    from cdc_app.api.cdc import CDCSummary
+    from cdc_app.api.cdc import CDCDataRecord
 
     # add each resource
     api.add_resource(
         CDCSummary,
         '/',
         '/summary',
+    )
+
+    api.add_resource(
+        CDCDataRecord,
+        '/cdc/resource/<id>'
     )
