@@ -45,7 +45,7 @@ def update_app_config(app):
     # silly flask_restul requires an extra config
     # to minimize json responses... blah blah
     settings = app.config.get('RESTFUL_JSON', {})
-    settings.setdefault('indent', None)
+    settings.setdefault('indent', 4)
     settings.setdefault('sort_keys', True)
 
 
@@ -62,6 +62,7 @@ def add_api_resources(api):
     # import necessary models
     from cdc_app.api.cdc import CDCSummary
     from cdc_app.api.cdc import CDCDataRecord
+    from cdc_app.api.cdc import CDCRecords
 
     # add each resource
     api.add_resource(
@@ -69,8 +70,11 @@ def add_api_resources(api):
         '/',
         '/summary',
     )
-
     api.add_resource(
         CDCDataRecord,
-        '/cdc/resource/<id>'
+        '/cdc/resource/<record_id>'
+    )
+    api.add_resource(
+        CDCRecords,
+        '/cdc/records[<start>:<stop>]'
     )

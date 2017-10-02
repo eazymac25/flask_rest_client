@@ -1,7 +1,8 @@
 from cdc_app.core import db
-db.session
+from cdc_app.model import BaseModel
 
-class CdcChronicRaw(db.Model):
+
+class CdcChronicRaw(BaseModel, db.Model):
 
     __tablename__ = 'cdc_chronic_raw'
 
@@ -56,3 +57,9 @@ class CdcChronicRaw(db.Model):
 
     def get_row(self, row_id):
         return self.query.filter(CdcChronicRaw.id == row_id).all()
+
+    def get_over_range(self, start, stop):
+        return self.query.filter(
+            CdcChronicRaw.id >= start,
+            CdcChronicRaw.id < stop
+        ).all()
