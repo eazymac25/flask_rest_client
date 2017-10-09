@@ -35,6 +35,7 @@ class CDCDataRecord(Resource):
     def get(record_id):
 
         row = conn.get_row(record_id)
+
         if row:
             return row.pop(), 201
         else:

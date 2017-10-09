@@ -11,6 +11,7 @@ def cast_to_dict(model_object):
             try:
                 # some nasty instance state object blah
                 if v.__class__.__name__ != 'InstanceState':
+                    # print(v)
                     d[k] = v
             except Exception as e:
                 continue
